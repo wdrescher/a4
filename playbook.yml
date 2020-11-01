@@ -1,0 +1,13 @@
+- name: "Launch shuffle endpoint"
+    docker:
+        name: api
+        image: shuffle
+- name: "Check endpoint works"
+    docker:
+        name: test
+        image: shuffle_test
+    links:
+        - api:shuffle
+    ports:
+        - 8080:80
+    pause: minutes=1
